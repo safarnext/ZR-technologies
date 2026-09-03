@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="ZR Technologies — Professional websites, domains, Cloudflare, business email, backend and digital solutions.">
+
+  <title>ZR Technologies | Code • Cloud • Connect</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #03060b;
+      --bg2: #07101a;
+      --card: rgba(10, 19, 30, .78);
+      --cyan: #20d9ff;
+      --cyan2: #72edff;
+      --white: #f2fbff;
+      --muted: #8ba1b0;
+      --border: rgba(80, 220, 255, .15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: Inter, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: .25;
+      background-image:
+        linear-gradient(rgba(32,217,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(32,217,255,.045) 1px, transparent 1px);
+      background-size: 55px 55px;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 650px;
+      height: 650px;
+      top: -350px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        circle,
+        rgba(32,217,255,.13),
+        transparent 70%
+      );
+      filter: blur(20px);
+      z-index: -1;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1160px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      background: rgba(3,6,11,.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Space Grotesk";
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .logo-box {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      border: 1px solid rgba(32,217,255,.55);
+      background: linear-gradient(145deg,#142432,#05090e);
+      box-shadow: 0 0 28px rgba(32,217,255,.15);
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: #a9bbc6;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan2);
+    }
+
+    .nav-button {
+      border: 1px solid rgba(32,217,255,.4);
+      padding: 11px 17px;
+      border-radius: 10px;
+      color: var(--cyan2);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: rgba(32,217,255,.04);
+      color: var(--cyan2);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+      margin-bottom: 23px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan);
+    }
+
+    h1 {
+      font-family: "Space Grotesk";
+      font-size: clamp(52px, 7vw, 90px);
+      line-height: .94;
+      letter-spacing: -4px;
+    }
+
+    .cyan {
+      color: var(--cyan);
+      text-shadow: 0 0 35px rgba(32,217,255,.25);
+    }
+
+    .hero-text {
+      max-width: 610px;
+      margin-top: 25px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 14px 21px;
+      border-radius: 11px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .primary {
+      background: var(--cyan);
+      color: #021017;
+      box-shadow: 0 0 30px rgba(32,217,255,.18);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 45px rgba(32,217,255,.35);
+    }
+
+    .secondary {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.025);
+    }
+
+    .secondary:hover {
+      border-color: rgba(32,217,255,.45);
+    }
+
+    /* HERO ART */
+
+    .hero-art {
+      height: 470px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .orbit {
+      width: 350px;
+      height: 350px;
+      border: 1px solid rgba(32,217,255,.18);
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 25s linear infinite;
+    }
+
+    .orbit::before {
+      content: "";
+      position: absolute;
+      inset: 40px;
+      border: 1px dashed rgba(32,217,255,.13);
+      border-radius: 50%;
+    }
+
+    .orbit::after {
+      content: "";
+      position: absolute;
+      inset: 90px;
+      border: 1px solid rgba(32,217,255,.12);
+      border-radius: 50%;
+    }
+
+    .core {
+      position: absolute;
+      width: 145px;
+      height: 145px;
+      border-radius: 32px;
+      background: linear-gradient(145deg,#172c3a,#05090f);
+      border: 1px solid rgba(114,237,255,.55);
+      box-shadow:
+        0 0 80px
