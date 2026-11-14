@@ -1,286 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="ZR Technologies — Professional websites, domains, Cloudflare, business email, backend and digital solutions.">
+<title>ZR Technologies | Code • Cloud • Connect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#03060b;--card:rgba(10,19,30,.78);--cyan:#20d9ff;--cyan2:#72edff;--white:#f2fbff;--muted:#8ba1b0;--border:rgba(80,220,255,.15);color-scheme:dark}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--white);font-family:Inter,system-ui,sans-serif;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom,0px)}
+body::before{content:"";position:fixed;inset:0;z-index:-2;opacity:.25;background-image:linear-gradient(rgba(32,217,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(32,217,255,.045) 1px,transparent 1px);background-size:55px 55px}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+a{text-decoration:none;color:inherit}
+.container{width:min(1160px,92%);margin:auto}
+/* loader, progress, cursor */
+#loader{position:fixed;inset:0;z-index:999;background:var(--bg);display:grid;place-items:center;font-family:"Space Grotesk",sans-serif}
+#loader b{font-size:clamp(60px,14vw,140px);color:var(--cyan);text-shadow:0 0 40px rgba(32,217,255,.4)}
+#loader small{display:block;text-align:center;letter-spacing:4px;color:var(--muted);font-size:12px}
+#bar{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--cyan);transform:scaleX(0);transform-origin:0;z-index:200;box-shadow:0 0 14px var(--cyan)}
+.cur{position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid var(--cyan);border-radius:50%;z-index:300;pointer-events:none;mix-blend-mode:screen;transition:width .25s,height .25s,margin .25s,background .25s}
+.cur.big{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(32,217,255,.15)}
+/* nav */
+nav{position:fixed;width:100%;top:0;z-index:100;padding-top:env(safe-area-inset-top,0px);background:rgba(3,6,11,.6);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",sans-serif;font-weight:700}
+.logo-box{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(32,217,255,.55);background:linear-gradient(145deg,#142432,#05090e);box-shadow:0 0 28px rgba(32,217,255,.15)}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;gap:28px;color:#a9bbc6;font-size:14px}
+.nav-links a:hover{color:var(--cyan2)}
+.nav-button{border:1px solid rgba(32,217,255,.4);padding:11px 17px;border-radius:10px;color:var(--cyan2);font-size:13px;font-weight:700;display:inline-block}
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:100px;border:1px solid var(--border);background:rgba(32,217,255,.04);color:var(--cyan2);text-transform:uppercase;letter-spacing:1.5px;font-size:11px;margin-bottom:23px}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan)}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(46px,8vw,104px);line-height:.98;letter-spacing:-3px}
+.ln{display:block;overflow:hidden;padding-bottom:.08em}
+.ch{display:inline-block;will-change:transform}
+.cyan{color:var(--cyan);text-shadow:0 0 35px rgba(32,217,255,.25)}
+.hero-text{max-width:560px;margin-top:25px;color:var(--muted);line-height:1.8;font-size:17px}
+.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-block;padding:14px 21px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;border:0;font-family:inherit;color:inherit}
+.primary{background:var(--cyan);color:#021017;box-shadow:0 0 30px rgba(32,217,255,.18)}
+.secondary{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.025)}
+.scroll-hint{position:absolute;bottom:28px;left:50%;color:var(--muted);font-size:11px;letter-spacing:3px}
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--border);padding:20px 0;background:rgba(3,6,11,.7)}
+.mt{display:flex;width:max-content;gap:50px;font-family:"Space Grotesk",sans-serif;font-size:clamp(28px,5vw,54px);font-weight:700;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(114,237,255,.55)}
+/* sections */
+section{padding:110px 0}
+.eyebrow{color:var(--cyan2);letter-spacing:3px;font-size:12px;text-transform:uppercase}
+h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(34px,5vw,60px);letter-spacing:-2px;margin:12px 0 44px;line-height:1.05}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;perspective:1000px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px;backdrop-filter:blur(10px);transform-style:preserve-3d;will-change:transform}
+.card:hover{border-color:rgba(32,217,255,.5);box-shadow:0 0 40px rgba(32,217,255,.12)}
+.card em{font-style:normal;font-size:28px;display:block;margin-bottom:18px}
+.card h3{font-family:"Space Grotesk",sans-serif;font-size:22px;margin-bottom:10px}
+.card p{color:var(--muted);line-height:1.7;font-size:15px}
+/* horizontal process */
+.hs{overflow:hidden;padding:0}
+.hs-in{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:90px 0 40px}
+.hs-head{width:min(1160px,92%);margin:0 auto}
+.track{display:flex;gap:24px;padding:0 4vw;width:max-content}
+.panel{width:min(480px,80vw);min-height:300px;flex:none;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:36px;display:flex;flex-direction:column;justify-content:space-between}
+.panel b{font-family:"Space Grotesk",sans-serif;font-size:80px;color:transparent;-webkit-text-stroke:1px var(--cyan);line-height:1}
+.panel h3{font-family:"Space Grotesk",sans-serif;font-size:26px;margin:14px 0 8px}
+.panel p{color:var(--muted);line-height:1.7}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;text-align:center}
+.stat b{display:block;font-family:"Space Grotesk",sans-serif;font-size:clamp(44px,7vw,80px);color:var(--cyan)}
+.stat span{color:var(--muted);font-size:14px}
+/* contact */
+.form{display:grid;gap:14px;max-width:620px}
+.form input,.form textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:15px;color:var(--white);font:inherit;font-size:15px}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--cyan)}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:40px 0 60px;border-top:1px solid var(--border)}
+@media(max-width:768px){.nav-links{display:none}.cur{display:none}h1{letter-spacing:-2px}.scroll-hint{display:none}.track{flex-direction:column;width:auto}.panel{width:100%}}
+@media(prefers-reduced-motion:reduce){.mt{transform:none!important}}
+</style>
+</head>
+<body>
 
-  <meta name="description"
-    content="ZR Technologies — Professional websites, domains, Cloudflare, business email, backend and digital solutions.">
+<div id="loader"><div><b id="lc">0</b><small>ZR TECHNOLOGIES</small></div></div>
+<div id="bar"></div>
+<div class="cur" id="cur"></div>
+<canvas id="gl"></canvas>
 
-  <title>ZR Technologies | Code • Cloud • Connect</title>
+<nav><div class="container nav-inner">
+  <a href="#top" class="logo"><div class="logo-box">ZR</div><div>ZR <span>Technologies</span></div></a>
+  <div class="nav-links"><a href="#services">Services</a><a href="#process">Process</a><a href="#stats">Results</a><a href="#contact">Contact</a></div>
+  <a href="#contact" class="nav-button mag">Get a Quote</a>
+</div></nav>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<header class="hero" id="top"><div class="container">
+  <div class="badge"><i></i>Code • Cloud • Connect</div>
+  <h1><span class="ln">We Build</span><span class="ln cyan">Digital Power.</span></h1>
+  <p class="hero-text">Professional websites, domains, Cloudflare setup, business email, backend and automation, built fast and built to grow your business.</p>
+  <div class="buttons"><a href="#contact" class="btn primary mag">Start a Project</a><a href="#services" class="btn secondary mag">Our Services</a></div>
+</div><div class="scroll-hint">SCROLL ↓</div></header>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-    rel="stylesheet">
+<div class="marq"><div class="mt" id="mt"><span>WEBSITES</span><span>CLOUDFLARE</span><span>DOMAINS</span><span>BUSINESS EMAIL</span><span>BACKEND</span><span>AUTOMATION</span><span>WEBSITES</span><span>CLOUDFLARE</span><span>DOMAINS</span><span>BUSINESS EMAIL</span><span>BACKEND</span><span>AUTOMATION</span></div></div>
 
-  <style>
-    :root {
-      --bg: #03060b;
-      --bg2: #07101a;
-      --card: rgba(10, 19, 30, .78);
-      --cyan: #20d9ff;
-      --cyan2: #72edff;
-      --white: #f2fbff;
-      --muted: #8ba1b0;
-      --border: rgba(80, 220, 255, .15);
-    }
+<section id="services"><div class="container">
+  <div class="eyebrow">What we do</div><h2 class="rv">Services that move your business.</h2>
+  <div class="grid">
+    <div class="card"><em>🌐</em><h3>Website Development</h3><p>Fast, responsive, animated websites with admin dashboards and booking or enquiry systems.</p></div>
+    <div class="card"><em>🔗</em><h3>Domains & Hosting</h3><p>Domain registration, DNS, SSL and reliable hosting, all set up properly from day one.</p></div>
+    <div class="card"><em>☁️</em><h3>Cloudflare Setup</h3><p>Pages, security, caching, Turnstile and Workers for speed and protection.</p></div>
+    <div class="card"><em>✉️</em><h3>Business Email</h3><p>Professional email on your own domain, with correct SPF, DKIM and DMARC records.</p></div>
+    <div class="card"><em>⚙️</em><h3>Backend & APIs</h3><p>Databases, APIs, payments, invoices and accounts dashboards for your operations.</p></div>
+    <div class="card"><em>🤖</em><h3>Automation</h3><p>Leads, alerts, follow-ups and reports that run on their own with n8n, Make and more.</p></div>
+  </div>
+</div></section>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<section class="hs" id="process"><div class="hs-in">
+  <div class="hs-head"><div class="eyebrow">How we work</div><h2>From idea to live, in four steps.</h2></div>
+  <div class="track" id="track">
+    <div class="panel"><b>01</b><div><h3>Discover</h3><p>We understand your business, audience and goals before touching any code.</p></div></div>
+    <div class="panel"><b>02</b><div><h3>Design</h3><p>Clean, modern layouts with motion that supports your message instead of distracting from it.</p></div></div>
+    <div class="panel"><b>03</b><div><h3>Develop</h3><p>Fast, secure builds with the backend, forms and automation your team needs.</p></div></div>
+    <div class="panel"><b>04</b><div><h3>Deploy & Support</h3><p>Launch on Cloudflare with monitoring, backups and ongoing improvements.</p></div></div>
+  </div>
+</div></section>
 
-    html {
-      scroll-behavior: smooth;
-    }
+<section id="stats"><div class="container"><div class="stats">
+  <div class="stat"><b data-c="50">0</b><span>Projects Delivered</span></div>
+  <div class="stat"><b data-c="99">0</b><span>Uptime %</span></div>
+  <div class="stat"><b data-c="24">0</b><span>Hour Support</span></div>
+  <div class="stat"><b data-c="100">0</b><span>% Client Focus</span></div>
+</div></div></section>
 
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: Inter, sans-serif;
-      overflow-x: hidden;
-    }
+<section id="contact"><div class="container">
+  <div class="eyebrow">Contact</div><h2 class="rv">Let’s build something great.</h2>
+  <div class="form">
+    <input id="fn" placeholder="Your name">
+    <input id="fp" placeholder="Phone / WhatsApp">
+    <textarea id="fm" rows="4" placeholder="Tell us about your project"></textarea>
+    <button class="btn primary mag" id="send" type="button">Send on WhatsApp</button>
+  </div>
+</div></section>
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      opacity: .25;
-      background-image:
-        linear-gradient(rgba(32,217,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(32,217,255,.045) 1px, transparent 1px);
-      background-size: 55px 55px;
-    }
+<footer>© 2026 ZR Technologies. Code • Cloud • Connect.</footer>
 
-    body::after {
-      content: "";
-      position: fixed;
-      width: 650px;
-      height: 650px;
-      top: -350px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(
-        circle,
-        rgba(32,217,255,.13),
-        transparent 70%
-      );
-      filter: blur(20px);
-      z-index: -1;
-    }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+var WA = '923000000000'; // <-- apna WhatsApp number (country code ke saath, + ke baghair)
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var loader = document.getElementById('loader');
+function hideLoader(){ loader.style.display = 'none'; }
+setTimeout(hideLoader, 5000); // safety: CDN fail ho to bhi content dikhe
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+// WhatsApp form
+document.getElementById('send').onclick = function(){
+  var t = 'Name: ' + fn.value + '\nPhone: ' + fp.value + '\nProject: ' + fm.value;
+  open('https://wa.me/' + WA + '?text=' + encodeURIComponent(t), '_blank');
+};
 
-    .container {
-      width: min(1160px, 92%);
-      margin: auto;
-    }
+// Split hero text into chars
+document.querySelectorAll('.ln').forEach(function(el){
+  el.innerHTML = el.textContent.split('').map(function(c){ return '<span class="ch">' + (c === ' ' ? '&nbsp;' : c) + '</span>'; }).join('');
+});
 
-    /* NAVBAR */
+if (window.gsap && window.ScrollTrigger && !reduce) {
+  gsap.registerPlugin(ScrollTrigger);
 
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      background: rgba(3,6,11,.72);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
+  // Smooth scroll
+  var lenis = window.Lenis ? new Lenis() : null;
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){ e.preventDefault(); lenis.scrollTo(a.getAttribute('href')); });
+    });
+  }
 
-    .nav-inner {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  // Loader counter -> intro
+  var o = { v: 0 };
+  gsap.to(o, { v: 100, duration: 1.4, ease: 'power2.inOut',
+    onUpdate: function(){ lc.textContent = Math.round(o.v); },
+    onComplete: function(){
+      gsap.to(loader, { yPercent: -100, duration: .9, ease: 'power4.inOut', onComplete: hideLoader });
+      var tl = gsap.timeline({ delay: .5 });
+      tl.from('.badge', { y: 20, opacity: 0, duration: .6 })
+        .from('.ch', { yPercent: 110, rotate: 6, duration: .9, stagger: .03, ease: 'power4.out' }, '-=.3')
+        .from('.hero-text, .buttons', { y: 30, opacity: 0, duration: .8, stagger: .15 }, '-=.5');
+    } });
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: "Space Grotesk";
-      font-weight: 700;
-      letter-spacing: .5px;
-    }
+  // Progress bar
+  gsap.to('#bar', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .2 } });
 
-    .logo-box {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      border: 1px solid rgba(32,217,255,.55);
-      background: linear-gradient(145deg,#142432,#05090e);
-      box-shadow: 0 0 28px rgba(32,217,255,.15);
-    }
+  // Marquee speeds with scroll
+  var mq = gsap.to('#mt', { xPercent: -50, ease: 'none', duration: 25, repeat: -1 });
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: function(s){ gsap.to(mq, { timeScale: 1 + Math.abs(s.getVelocity()) / 400, duration: .3, overwrite: true }); gsap.to(mq, { timeScale: 1, delay: .4, duration: 1 }); } });
 
-    .logo span {
-      color: var(--cyan);
-    }
+  // Headings, cards
+  gsap.utils.toArray('.rv').forEach(function(el){ gsap.from(el, { y: 50, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }); });
+  gsap.from('.card', { y: 80, opacity: 0, duration: .8, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: '#services .grid', start: 'top 80%' } });
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      color: #a9bbc6;
-      font-size: 14px;
-    }
+  // 3D tilt on cards
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('mousemove', function(e){ var r = c.getBoundingClientRect();
+      gsap.to(c, { rotationY: ((e.clientX - r.left) / r.width - .5) * 14, rotationX: -((e.clientY - r.top) / r.height - .5) * 14, duration: .4 }); });
+    c.addEventListener('mouseleave', function(){ gsap.to(c, { rotationX: 0, rotationY: 0, duration: .6 }); });
+  });
 
-    .nav-links a:hover {
-      color: var(--cyan2);
-    }
+  // Horizontal scroll (desktop only)
+  var mm = gsap.matchMedia();
+  mm.add('(min-width: 769px)', function(){
+    var tr = document.getElementById('track');
+    gsap.to(tr, { x: function(){ return -(tr.scrollWidth - innerWidth + innerWidth * .08); }, ease: 'none',
+      scrollTrigger: { trigger: '.hs-in', pin: true, scrub: 1, end: function(){ return '+=' + tr.scrollWidth; }, invalidateOnRefresh: true } });
+  });
 
-    .nav-button {
-      border: 1px solid rgba(32,217,255,.4);
-      padding: 11px 17px;
-      border-radius: 10px;
-      color: var(--cyan2);
-      font-size: 13px;
-      font-weight: 700;
-    }
+  // Counters
+  gsap.utils.toArray('[data-c]').forEach(function(el){
+    var n = { v: 0 }, end = +el.dataset.c;
+    gsap.to(n, { v: end, duration: 2, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: function(){ el.textContent = Math.round(n.v) + '+'; } });
+  });
 
-    /* HERO */
+  // Magnetic buttons + cursor (mouse devices)
+  if (matchMedia('(pointer: fine)').matches) {
+    var cx = gsap.quickTo('#cur', 'x', { duration: .25 }), cy = gsap.quickTo('#cur', 'y', { duration: .25 });
+    addEventListener('mousemove', function(e){ cx(e.clientX); cy(e.clientY); });
+    document.querySelectorAll('a,button,.card').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cur.classList.add('big'); });
+      el.addEventListener('mouseleave', function(){ cur.classList.remove('big'); });
+    });
+    document.querySelectorAll('.mag').forEach(function(b){
+      b.addEventListener('mousemove', function(e){ var r = b.getBoundingClientRect();
+        gsap.to(b, { x: (e.clientX - r.left - r.width / 2) * .35, y: (e.clientY - r.top - r.height / 2) * .35, duration: .3 }); });
+      b.addEventListener('mouseleave', function(){ gsap.to(b, { x: 0, y: 0, duration: .6, ease: 'elastic.out(1,.4)' }); });
+    });
+  }
+} else {
+  hideLoader();
+  document.querySelectorAll('[data-c]').forEach(function(el){ el.textContent = el.dataset.c + '+'; });
+}
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 130px 0 80px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 9px 13px;
-      border-radius: 100px;
-      border: 1px solid var(--border);
-      background: rgba(32,217,255,.04);
-      color: var(--cyan2);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-size: 11px;
-      margin-bottom: 23px;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 15px var(--cyan);
-    }
-
-    h1 {
-      font-family: "Space Grotesk";
-      font-size: clamp(52px, 7vw, 90px);
-      line-height: .94;
-      letter-spacing: -4px;
-    }
-
-    .cyan {
-      color: var(--cyan);
-      text-shadow: 0 0 35px rgba(32,217,255,.25);
-    }
-
-    .hero-text {
-      max-width: 610px;
-      margin-top: 25px;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 17px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      padding: 14px 21px;
-      border-radius: 11px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: .25s;
-    }
-
-    .primary {
-      background: var(--cyan);
-      color: #021017;
-      box-shadow: 0 0 30px rgba(32,217,255,.18);
-    }
-
-    .primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 45px rgba(32,217,255,.35);
-    }
-
-    .secondary {
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.025);
-    }
-
-    .secondary:hover {
-      border-color: rgba(32,217,255,.45);
-    }
-
-    /* HERO ART */
-
-    .hero-art {
-      height: 470px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .orbit {
-      width: 350px;
-      height: 350px;
-      border: 1px solid rgba(32,217,255,.18);
-      border-radius: 50%;
-      position: relative;
-      animation: rotate 25s linear infinite;
-    }
-
-    .orbit::before {
-      content: "";
-      position: absolute;
-      inset: 40px;
-      border: 1px dashed rgba(32,217,255,.13);
-      border-radius: 50%;
-    }
-
-    .orbit::after {
-      content: "";
-      position: absolute;
-      inset: 90px;
-      border: 1px solid rgba(32,217,255,.12);
-      border-radius: 50%;
-    }
-
-    .core {
-      position: absolute;
-      width: 145px;
-      height: 145px;
-      border-radius: 32px;
-      background: linear-gradient(145deg,#172c3a,#05090f);
-      border: 1px solid rgba(114,237,255,.55);
-      box-shadow:
-        0 0 80px
+// Three.js background
+if (window.THREE && !reduce) {
+  var cv = document.getElementById('gl');
+  var r = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: true });
+  r.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  var sc = new THREE.Scene(), cam = new THREE.PerspectiveCamera(55, 1, .1, 100);
+  cam.position.z = 6;
+  var N = innerWidth < 769 ? 900 : 2200, pos = new Float32Array(N * 3);
+  for (var i = 0; i < N; i++) {
+    var a = Math.random() * 6.283, b = Math.acos(2 * Math.random() - 1), d = 3 + Math.random() * 8;
+    pos[i * 3] = d * Math.sin(b) * Math.cos(a); pos[i * 3 + 1] = d * Math.sin(b) * Math.sin(a); pos[i * 3 + 2] = d * Math.cos(b);
+  }
+  var g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var pts = new THREE.Points(g, new THREE.PointsMaterial({ color: 0x20d9ff, size: .035, transparent: true, opacity: .8 }));
+  var ico = new THREE.Mesh(new THREE.IcosahedronGeometry(1.7, 1), new THREE.MeshBasicMaterial({ color: 0x20d9ff, wireframe: true, transparent: true, opacity: .35 }));
+  var core = new THREE.Mesh(new THREE.IcosahedronGeometry(.8, 0), new THREE.MeshBasicMaterial({ color: 0x72edff, wireframe: true }));
+  var grp = new THREE.Group(); grp.add(ico, core); sc.add(pts, grp);
+  var mx = 0, my = 0, sp = 0, gx = 0;
+  function rs(){ r.setSize(innerWidth, innerHeight); cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); }
+  rs(); addEventListener('resize', rs);
+  addEventListener('mousemove', function(e){ mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+  addEventListener('scroll', function(){ var m = document.documentElement.scrollHeight - innerHeight; sp = m > 0 ? scrollY / m : 0; }, { passive: true });
+  var clock = new THREE.Clock();
+  (function loop(){
+    var t = clock.getElapsedTime(), wide = innerWidth > 900;
+    gx += ((wide ? 2.4 * Math.cos(sp * 6.283) : 0) - gx) * .05;
+    grp.position.x = gx; grp.position.y = Math.sin(t) * .15;
+    grp.rotation.y = t * .25 + sp * 8; grp.rotation.x = sp * 5 + my * .6;
+    core.rotation.y = -t * .6; core.rotation.z = t * .4;
+    var s = 1 + sp * .6 + Math.sin(t * 1.5) * .03; grp.scale.set(s, s, s);
+    ico.material.color.setHSL(.52 + sp * .2, 1, .6); core.material.color.setHSL(.52 + sp * .2, 1, .75);
+    pts.rotation.y = t * .02 + sp * 2; pts.rotation.x = sp;
+    cam.position.x += (mx * 1.2 - cam.position.x) * .04; cam.position.y += (-my * .8 - cam.position.y) * .04; cam.lookAt(0, 0, 0);
+    r.render(sc, cam); requestAnimationFrame(loop);
+  })();
+}
+</script>
+</body>
+</html>
