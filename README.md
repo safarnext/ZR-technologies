@@ -33,4 +33,4 @@ This project is configured for Next.js static export. In Cloudflare Pages, conne
 - Build command: `npx next build`
 - Build output directory: `out`
 
-The project must be built by Cloudflare before it can be served. Uploading this source ZIP directly as a prebuilt Pages asset will not work.
+The project must be built by Cloudflare before it can be served. Uploading this source ZIP directly as a prebuilt Pages asset will not work..
